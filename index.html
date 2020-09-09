@@ -5,14 +5,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios-jsonp/dist/index.min.js"></script>
     <script>
         function reqest_axios() {
-            const url = "https://charasheet.vampire-blood.net/list_swordworld2.js"
+            const url = "https://charasheet.vampire-blood.net/100.js?callback=test"
             const elm = document.getElementById("json_text_element")
             let res = null
 
-            axios.get(url)
+            axios.get(url, {
+                adapter: axiosJsonpAdapter,
+                // callbackParamName: "cb",
+                // params: {
+                //     "name": "foo"
+                // }
+            })
                 .then(function (response) {
                     res = response
                 })
