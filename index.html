@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        function reqest_axios() {
+            const url = "https://charasheet.vampire-blood.net/list_swordworld2.js"
+            const elm = document.getElementById("json_text_element")
+            let res = null
+
+            axios.get(url)
+                .then(function (response) {
+                    res = response
+                })
+                .catch(function (error) {
+                    res = error
+                })
+                .finally(function () {
+                    // always executed
+                    console.log("end");
+                });
+        }
+    </script>
+</head>
+
+<body>
+    <h1>API Json Text</h1>
+    <button onclick="reqest_axios()">Click!</button>
+    <h2 id="json_text_element">ーーー</h2>
+</body>
+
+</html>
